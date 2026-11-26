@@ -1,4 +1,17 @@
 ---- APPLICATOR ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+local function memo(f)
+        if type (f) ~= "function" then return function() return f end end
+        local cached = false
+        local res
+        return function(...)
+                if not cached then
+                        res    = { f (...) }
+                        cached = true
+                end
+                return unpack (res)
+        end
+end
+
 local function thunk(f)
         if type (f) ~= "function" then return function() return f end end
         return function(...)

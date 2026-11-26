@@ -114,6 +114,21 @@ case (fruit) {
 }
 ```
 
+### Memoization
+
+A minimal implementation of memoization, allows you to compute something lazily once and then reuse multiple times
+
+```lua
+local function mult(a, b)
+        return a * b
+end
+local num = memo(mult)(4, 8) -- creates a closure which, when called will return the result of `mult(4, 8)`
+-- each will print the result, but the value itself is computed once
+print(mum) -- 32
+print(mum) -- 32
+print(mum) -- 32
+```
+
 ## TODO
 
 - Extend `case` to handle complicated data structures as patterns
